@@ -1,3 +1,4 @@
+import 'package:access_challenge/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:access_challenge/components/or_divider.dart';
 import 'package:access_challenge/components/social_icon.dart';
@@ -27,7 +28,7 @@ class _RegisterPageState extends State<Body>{
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black45,
+        backgroundColor: appBarBackground,
         centerTitle: true,
         title: Text(widget.title),
       ),
@@ -73,8 +74,8 @@ class _RegisterPageState extends State<Body>{
                   obscureText: true,
                 ),
                 RoundedButton(
-                  text: "SIGN UP",
-                  textColor: Colors.black,
+                  text: signUpTextBtn,
+                  textColor: textBtnColor,
                   press: () async{
                     if(_formKey.currentState!.validate()){
                       await _register();
