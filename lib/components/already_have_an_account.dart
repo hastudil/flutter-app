@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:access_challenge/constants.dart';
+import 'package:access_challenge/constants.dart';
 
 class AlreadyHaveAnAccountCheck extends StatelessWidget {
   final bool login;
@@ -18,8 +18,7 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
       children: <Widget>[
         Text(
           login ? "Don't have an Account? " : "Already have an Account? ",
-          //style: const TextStyle(color: singInBtnColor),
-          style: const TextStyle(color: Colors.black),
+          style: const TextStyle(color: textBtnColor),
         ),
         MouseRegion(
           cursor: SystemMouseCursors.click,
@@ -28,7 +27,7 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
             child: Text(
               login ? "Sign Up" : "Sign In",
               style: const TextStyle(
-                color: Colors.black,//singInBtnColor,
+                color: textBtnColor,
                 fontWeight: FontWeight.bold,
 
               ),
