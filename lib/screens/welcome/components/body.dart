@@ -1,16 +1,9 @@
-import 'package:access_challenge/models/products.dart';
 import 'package:flutter/material.dart';
-//import 'package:access_challenge/screens/login/login_screen.dart';
-//import 'package:access_challenge/screens/Signup/signup_screen.dart';
-//import 'package:access_challenge/screens/welcome/components/background.dart';
-//import 'package:access_challenge/components/rounded_button.dart';
-//import 'package:access_challenge/constants.dart';
-//import 'package:access_challenge/screens/login/login_screen.dart';
 import 'package:access_challenge/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:access_challenge/components/bar_chart.dart';
-
 import 'package:access_challenge/components/import_data_controller.dart';
+import 'package:access_challenge/constants.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -19,18 +12,19 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Size size = MediaQuery.of(context).size;
     final User? user = _auth.currentUser;
     final String? userEmail = user!.email;
-    // This size provide us total height and width of our screen
+    
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.black45,
-        centerTitle: true,
+        backgroundColor: appBarBackground,
         title: Text(
           'Welcome $userEmail',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 12
+          ),
         ),
         actions: <Widget>[
           Builder(builder: (BuildContext context){
@@ -42,7 +36,8 @@ class Body extends StatelessWidget {
               child: const Text('Import Data',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white
+                  color: signOutColor,
+                  fontSize: 12
                 )
               ),
             );
@@ -69,7 +64,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const AccessChallengeWeb();//SignInPage();
+                      return const AccessChallengeWeb();
                     },
                   ),
                 );
@@ -77,7 +72,8 @@ class Body extends StatelessWidget {
               child: const Text('Sign out',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white
+                  color: signOutColor,
+                  fontSize: 12
                 )
               ),
             );
