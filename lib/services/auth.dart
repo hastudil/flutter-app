@@ -21,8 +21,6 @@ class AuthService with ChangeNotifier {
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   AuthStatus _status = AuthStatus.Uninitialized;
-
-  //final GoogleSignIn _googleSignIn = GoogleSignIn();
   
 
   AuthService.instance() : _auth = FirebaseAuth.instance {
@@ -59,20 +57,11 @@ class AuthService with ChangeNotifier {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return const WelcomeScreen();//SignInPage();
+            return const WelcomeScreen();
           },
         ),
       );
-
-      /*ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${user.email} login.'))
-      );*/
-
-      //userCredential = await _auth.signInWithCredential(googleAuthCredential);
-      //UserCredential userCredential;
-      //User user = userCredential.user!;
       
-      //final user = userCredential.user;
       await updateUserData(user);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -83,8 +72,7 @@ class AuthService with ChangeNotifier {
       notifyListeners();
     }
   }
-
-  //Future<User> googleSignIn() async {
+  
   Future<void> googleSignIn(context) async {
     try {
       UserCredential userCredential;
@@ -106,23 +94,17 @@ class AuthService with ChangeNotifier {
       }
       User user = userCredential.user!;
       
-      //final user = userCredential.user;
       await updateUserData(user);
-
-      /*ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login ${user!.displayName} with Google'),
-      ));*/
 
       Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) {
-            return const WelcomeScreen();//SignInPage();
+            return const WelcomeScreen();
           },
         ),
       );
     } catch (e) {
-      //print(e);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Failed login with Google.'),
       ));
@@ -130,27 +112,6 @@ class AuthService with ChangeNotifier {
       _status = AuthStatus.Uninitialized;
       notifyListeners();
     }
-
-    /*_status = AuthStatus.Authenticating;
-    notifyListeners();
-
-    try {
-      GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();//_googleSignIn.signIn();
-      GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
-      _googleUser = googleUser;
-
-      final AuthCredential credential = GoogleAuthProvider.credential(
-          idToken: googleAuth.idToken,
-          accessToken: googleAuth.accessToken,
-        );
-      UserCredential authResult = await _auth.signInWithCredential(credential);
-      User user = authResult.user!;
-      await updateUserData(user);
-    } catch (e) {
-      _status = AuthStatus.Uninitialized;
-      notifyListeners();
-      //return null;
-    }*/
   }
 
   Future<DocumentSnapshot> updateUserData(User user) async {
