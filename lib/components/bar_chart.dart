@@ -3,8 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:http/http.dart' as http;
-
-import '../screens/loading_screen.dart';
+import 'package:access_challenge/screens/loading_screen.dart';
 
 class MyChart extends StatefulWidget {
   const MyChart ({Key? key, }) : super(key: key);
